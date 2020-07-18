@@ -4,16 +4,25 @@ import spotipy, requests, os
 from spotipy.oauth2 import SpotifyClientCredentials
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECKEY', 'ded') # random secret key
+app.secret_key = os.environ.get('SECKEY', 'insert random string') # random secret key
+
+## ------ To run locally set localrun to True and use your client id and secret ----------------
+localrun = False
+cid = os.environ.get('CLID', 'insert client id') # spotify client id
+secret = os.environ.get('SECR', 'insert client secret') # spotify client secret
+
+## --- also ensure http://127.0.0.1:5000/callback is there in your app's redirect uris
 
 # Redirect http to https
 @app.before_request
 def before_request():
-    #session.permanent = True
-    if not request.is_secure and app.env != "development" :
-        url = request.url.replace("http://", "https://", 1)
-        code = 301
-        return redirect(url, code=code)
+    if not localrun :
+        if not request.is_secure and app.env != "development" :
+            url = request.url.replace("http://", "https://", 1)
+            code = 301
+            return redirect(url, code=code)
+    else :
+        pass
 
 # Home page
 @app.route('/')
@@ -25,13 +34,17 @@ def home():
 def static_file(path):
     return app.send_static_file(path)
 
-cid = os.environ.get('CLID', 'ded') # spotify client id
-secret = os.environ.get('SECR', 'ded') # spotify client secret
+
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 API_BASE = 'https://accounts.spotify.com'
-REDIRECT_URI = "https://spotificate.herokuapp.com/callback" # Must be present in the app dashboard redirect uris
+
+if localrun :
+    REDIRECT_URI = "http://127.0.0.1:5000/callback" # ensure this redirect uri is added in your app dashboard
+else :
+    REDIRECT_URI = "https://spotificate.herokuapp.com/callback" # Must be present in the app dashboard redirect uris
+
 SCOPE = 'user-library-read,user-read-recently-played,user-top-read'
 SHOW_DIALOG = False
 
@@ -45,7 +58,7 @@ def api_callback():
     res = requests.post(auth_token_url, data={
         "grant_type":"authorization_code",
         "code":code,
-        "redirect_uri":"https://spotificate.herokuapp.com/callback",
+        "redirect_uri":REDIRECT_URI,
         "client_id":cid,
         "client_secret":secret
         })
