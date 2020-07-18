@@ -9,9 +9,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Flask and spotify packages are used, use pip or something similar to install them.
-Get your client id and secret from the spotify developer dashboard page. Create an app if you don't have one already.
-Add http://127.0.0.1:5000/callback to the redirect uris in your app settings.
+* Git clone into your local repository.
+* Flask and spotify packages are used, use pip or something similar to install them.
+* Get your client id and secret from the spotify developer dashboard page. Create an app if you don't have one already.
+* Add http://127.0.0.1:5000/callback to the redirect uris in your app settings.
 
 ### Set up and run
 
