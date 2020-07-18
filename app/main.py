@@ -75,7 +75,6 @@ def go():
     try :
         sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager,auth=session['toke'])
         response = []
-        print('------------',sp.current_user())
         x=0
         for i in range(5) :
             flag=0
