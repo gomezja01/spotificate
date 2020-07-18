@@ -1,7 +1,7 @@
 # Spotificate
 
-A python web app deployed on heroku that shows your spotify stats. Uses flask and spotipy. Front end is made using mobirise website buider.
-Check it out [here](https://spotificate.herokuapp.com/)
+A python web app deployed on heroku that shows your spotify stats. Uses flask and spotipy. Check it out [here](https://spotificate.herokuapp.com/)
+
 
 ## Running locally
 
