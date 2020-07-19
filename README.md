@@ -49,6 +49,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 Only displays top tracks of user as of now
 * Display more data such as average danceability of songs, valence(mood) of recent songs and more..
 * Use matplotlib or any other library to display visualizations of the data.
+* Stop using mobirise and make frontend lighter
 
 
 
