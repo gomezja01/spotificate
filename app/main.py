@@ -88,6 +88,7 @@ def go():
         stats[-2] /= 100
         stats[-3] /= 100
         return render_template("recents.html", data=response,len=len(response),name=sp.current_user()['display_name'],stats=stats)
-    except :
+    except Exception as e:
+        print('-----------error : ',e)
         auth_url = f'{API_BASE}/authorize?client_id={cid}&response_type=code&redirect_uri={REDIRECT_URI}&scope={SCOPE}&show_dialog={SHOW_DIALOG}'
         return redirect(auth_url)
