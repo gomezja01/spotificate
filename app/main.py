@@ -82,8 +82,9 @@ def go():
                 stats[i] += audio_features[key[i]]
             stats[-1] += item['track']['popularity']
             count+=1
-        for i in range(len(stats)):
-            stats[i] = (stats[i]/count)*100
+        if count>= 1 :
+            for i in range(len(stats)):
+                stats[i] = (stats[i]/count)*100
         stats[-1] /= 100
         stats[-2] /= 100
         stats[-3] /= 100
