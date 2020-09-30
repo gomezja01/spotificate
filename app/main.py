@@ -7,9 +7,9 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECKEY', 'insert random string') # random secret key
 
 ## ------ To run locally set localrun to True and use your client id and secret ----------------
-localrun = False
-cid = os.environ.get('CLID', 'insert ') # spotify client id
-secret = os.environ.get('SECR', 'insert') # spotify client secret
+localrun = True
+cid = os.environ.get('CLID', 'jorgeid') # spotify client id
+secret = os.environ.get('SECR', 'jorgesecret') # spotify client secret
 
 ## --- also ensure http://127.0.0.1:5000/callback is there in your app's redirect uris
 
