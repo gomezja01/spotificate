@@ -24,7 +24,7 @@ cid = os.environ.get('CLID', 'insert client id') # spotify client id
 secret = os.environ.get('SECR', 'insert client secret') # spotify client secret
 ```
 
-Now run wsgi.py and visit http://127.0.0.1:5000 in your browser.
+Now run `python wsgi.py` and visit http://127.0.0.1:5000 in your browser.
 
 ## Built Using
 
