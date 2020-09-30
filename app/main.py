@@ -4,12 +4,12 @@ import spotipy, requests, os
 from spotipy.oauth2 import SpotifyClientCredentials
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECKEY', 'insert random string') # random secret key
+app.secret_key = os.environ.get('SECKEY', 'lkajsdkjklsjfksfd') # random secret key
 
 ## ------ To run locally set localrun to True and use your client id and secret ----------------
 localrun = True
-cid = os.environ.get('CLID', 'jorgeid') # spotify client id
-secret = os.environ.get('SECR', 'jorgesecret') # spotify client secret
+cid = os.environ.get('CLID', '5a99789593914f2cb651ab6958ce7639') # spotify client id
+secret = os.environ.get('SECR', 'eebd965832734f2b814f59f9edfbd16e') # spotify client secret
 
 ## --- also ensure http://127.0.0.1:5000/callback is there in your app's redirect uris
 
