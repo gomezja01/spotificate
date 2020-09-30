@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, session, redirect, request, make_response
 import spotipy.util as util
 import spotipy, requests, os
@@ -73,7 +75,8 @@ def go():
         key = ['danceability','energy','valence','speechiness','acousticness','tempo','key','popularity']
         sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager,auth=session['toke'])
         response = []
-        results = sp.current_user_recently_played(limit=50)
+        results = sp.current_user_recently_played(limit=10)
+        print(json.dumps(results[0], indent=2))
         for item in (results['items']):
             # song name , artist , image url , track uri
             response.append((item['track']['name'],item['track']['artists'][0]['name'],item['track']['album']['images'][2]['url'],item['track']['uri']))
